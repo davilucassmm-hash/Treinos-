@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="FITNESS - seu treino de academia com lista de exercícios, divisão da semana e acompanhamento de progresso.">
+  <meta name="format-detection" content="telephone=no">
+  <title>FITNESS - Meu Treino</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E%F0%9F%92%AA%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E%F0%9F%92%AA%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- ==============================
+         TELA DE LOGIN
+         ============================== -->
+    <section id="loginScreen" class="screen login-screen">
+      <div class="login-card">
+        <div class="brand-icon">💪</div>
+        <span class="eyebrow">ACADEMIA</span>
+        <h1>FITNESS</h1>
+        <p class="subtitle">Seu treino, seu objetivo.</p>
+
+        <form id="loginForm">
+          <label for="nameInput">Seu nome</label>
+          <input
+            id="nameInput"
+            type="text"
+            placeholder="Digite seu nome"
+            autocomplete="name"
+            autocapitalize="words"
+            autocorrect="off"
+            spellcheck="false"
+            enterkeyhint="go"
+            inputmode="text"
+            maxlength="50"
+            required
+          >
+          <button class="primary-btn" type="submit">ACESSAR TREINO</button>
+          <p id="loginError" class="error-message" role="alert"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==============================
+         TELA DE TREINO
+         ============================== -->
+    <section id="workoutScreen" class="screen workout-screen hidden">
+
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">SEU TREINO</span>
+          <h2>Olá, <span id="userName"></span>! 👋</h2>
+        </div>
+        <button id="logoutBtn" class="logout-btn" type="button">Sair</button>
+      </header>
+
+      <section class="welcome-card">
+        <div>
+          <span class="small-label">TREINO ATUAL</span>
+          <h3 id="currentWorkoutTitle">Treino 1</h3>
+          <span id="workoutFocus" class="workout-focus"></span>
+          <p id="motivationText">Continue firme! 💪</p>
+        </div>
+        <div class="progress-circle">
+          <span id="progressPercent">0%</span>
+        </div>
+      </section>
+
+      <!-- Abas de treino: montadas pelo script de acordo com os
+           treinos cadastrados para o aluno (Treino 1, 2, 3...) -->
+      <nav id="workoutTabs" class="workout-tabs" aria-label="Seleção de treino"></nav>
+
+      <!-- Abas internas: exercícios do treino ou divisão da semana -->
+      <nav class="view-tabs" aria-label="Visualização do treino">
+        <button class="view-tab-btn active" data-view="exercicios" type="button">
+          📋 Exercícios
+        </button>
+        <button class="view-tab-btn" data-view="divisao" type="button">
+          📅 Divisão da semana
+        </button>
+      </nav>
+
+      <!-- ==============================
+           VISÃO 1: LISTA DE EXERCÍCIOS
+           ============================== -->
+      <div id="exercisesView">
+
+        <section class="progress-section">
+          <div class="progress-info">
+            <span>Progresso</span>
+            <strong id="progressText">0/0 exercícios</strong>
+          </div>
+          <div class="progress-bar">
+            <div id="progressBarFill" class="progress-bar-fill"></div>
+          </div>
+        </section>
+
+        <div class="exercise-header">
+          <div>
+            <span class="small-label">LISTA DE EXERCÍCIOS</span>
+            <h3 id="exerciseCountTitle">Treino 1</h3>
+          </div>
+          <button id="resetBtn" class="reset-btn" type="button">↻ Resetar</button>
+        </div>
+
+        <section id="exerciseList" class="exercise-list"></section>
+
+        <div id="emptyWorkout" class="empty-state hidden">
+          <div>🏋️</div>
+          <h3>Treino sem exercícios</h3>
+          <p>Adicione exercícios ao cadastro deste treino no arquivo script.js.</p>
+        </div>
+
+      </div>
+
+      <!-- ==============================
+           VISÃO 2: DIVISÃO DA SEMANA
+           SEGUNDA ATÉ SEXTA
+           ============================== -->
+      <section id="divisionView" class="division-section hidden">
+
+        <div class="division-header">
+          <div>
+            <span class="small-label">DIVISÃO DE TREINOS</span>
+            <h3>Segunda a sexta</h3>
+          </div>
+          <p id="divisionSummary" class="division-summary"></p>
+        </div>
+
+        <div id="divisionGrid" class="division-grid"></div>
+
+      </section>
+
+    </section>
+  </main>
+
+  <!-- Modal de confirmação -->
+  <div id="confirmModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <h3 id="modalTitle">Resetar treino?</h3>
+      <p>Tem certeza que deseja apagar o progresso deste treino?</p>
+      <div class="modal-actions">
+        <button id="cancelResetBtn" class="secondary-btn" type="button">Cancelar</button>
+        <button id="confirmResetBtn" class="danger-btn" type="button">Resetar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <noscript>
+    <p style="padding:20px;text-align:center;font-family:Arial,sans-serif;color:#f4f7fb;background:#11161e">
+      Para usar o site de treinos é preciso ativar o JavaScript no navegador.
+    </p>
+  </noscript>
+</body>
+</html>

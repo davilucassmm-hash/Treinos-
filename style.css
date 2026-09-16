@@ -1,0 +1,1122 @@
+/* =========================================
+   FITNESS - ESTILO
+   ========================================= */
+
+:root {
+  --bg: #080b10;
+  --surface: #11161e;
+  --surface-2: #171e28;
+  --border: #27313d;
+  --text: #f4f7fb;
+  --muted: #9ca8b7;
+  --accent: #7cff4f;
+  --accent-dark: #55c932;
+  --danger: #ff5c5c;
+  --shadow: 0 18px 50px rgba(0, 0, 0, .28);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(124, 255, 79, .08), transparent 32%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  -webkit-tap-highlight-color: rgba(124, 255, 79, .18);
+}
+
+/* Nada pode ultrapassar a largura da tela */
+img,
+picture,
+svg,
+video,
+iframe,
+canvas,
+embed,
+object {
+  max-width: 100%;
+}
+
+img,
+video,
+iframe {
+  height: auto;
+}
+
+/* Vídeo do YouTube incorporado fica responsivo (16:9) */
+.video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 13px;
+  background: #0b0f15;
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Remove o atraso de 300ms do toque em celulares mais antigos */
+a,
+button,
+input,
+label {
+  touch-action: manipulation;
+}
+
+/* Evita zoom automático ao digitar no iPhone/iPad */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+a {
+  overflow-wrap: anywhere;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* =========================================
+   LOGIN
+   ========================================= */
+
+.login-screen {
+  display: grid;
+  place-items: center;
+  padding:
+    calc(24px + env(safe-area-inset-top)) 24px
+    calc(24px + env(safe-area-inset-bottom)) 24px;
+}
+
+.login-card {
+  width: min(100%, 430px);
+  padding: 38px 30px;
+  background: rgba(17, 22, 30, .94);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.brand-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  background: rgba(124, 255, 79, .1);
+  border: 1px solid rgba(124, 255, 79, .25);
+  border-radius: 20px;
+  font-size: 32px;
+}
+
+.eyebrow,
+.small-label {
+  display: block;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.login-card h1 {
+  margin: 8px 0 4px;
+  font-size: 42px;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  margin: 0 0 30px;
+  color: var(--muted);
+}
+
+.login-card form {
+  text-align: left;
+}
+
+.login-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.login-card input {
+  width: 100%;
+  min-height: 52px;
+  padding: 15px 16px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  outline: none;
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.login-card input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 255, 79, .1);
+}
+
+.primary-btn {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 14px;
+  padding: 15px;
+  border: 0;
+  border-radius: 13px;
+  background: var(--accent);
+  color: #081006;
+  font-weight: 900;
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.primary-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.error-message {
+  min-height: 20px;
+  margin: 12px 0 0;
+  color: #ff7676;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* =========================================
+   TELA DE TREINO
+   ========================================= */
+
+.workout-screen {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding:
+    calc(26px + env(safe-area-inset-top)) calc(20px + env(safe-area-inset-right))
+    calc(50px + env(safe-area-inset-bottom)) calc(20px + env(safe-area-inset-left));
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.topbar > div {
+  min-width: 0;
+  flex: 1 1 200px;
+}
+
+.topbar h2 {
+  margin: 6px 0 0;
+  font-size: clamp(22px, 5vw, 32px);
+  overflow-wrap: anywhere;
+}
+
+.logout-btn,
+.reset-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  border-radius: 11px;
+  min-height: 46px;
+  padding: 10px 16px;
+  font-weight: 700;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.logout-btn:hover,
+.reset-btn:hover {
+  color: var(--text);
+  border-color: #3b4858;
+}
+
+.welcome-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #151d26, #10151c);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.welcome-card h3 {
+  margin: 7px 0 4px;
+  font-size: 25px;
+}
+
+.welcome-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.progress-circle {
+  flex: 0 0 auto;
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border: 5px solid var(--accent);
+  border-radius: 50%;
+  background: var(--surface);
+  font-weight: 900;
+}
+
+.workout-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.tab-btn {
+  min-height: 48px;
+  padding: 13px 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--muted);
+  font-weight: 800;
+  transition: .15s ease;
+}
+
+.tab-btn:hover {
+  color: var(--text);
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #081006;
+}
+
+/* =========================================
+   ABAS INTERNAS (EXERCÍCIOS / DIVISÃO)
+   ========================================= */
+
+.view-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  margin-bottom: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.view-tab-btn {
+  flex: 1;
+  min-height: 46px;
+  padding: 11px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 13px;
+  transition: .15s ease;
+}
+
+.view-tab-btn:hover {
+  color: var(--text);
+}
+
+.view-tab-btn.active {
+  background: var(--surface-2);
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px rgba(124, 255, 79, .25);
+}
+
+.progress-section {
+  margin-bottom: 26px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 9px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.progress-info strong {
+  color: var(--text);
+}
+
+.progress-bar {
+  height: 9px;
+  overflow: hidden;
+  background: #202936;
+  border-radius: 999px;
+}
+
+.progress-bar-fill {
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width .3s ease;
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 13px;
+}
+
+.exercise-header h3 {
+  margin: 5px 0 0;
+}
+
+.exercise-list {
+  display: grid;
+  gap: 13px;
+}
+
+.exercise-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 18px;
+  padding: 17px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color .2s ease, opacity .2s ease, transform .2s ease;
+}
+
+.exercise-card:hover {
+  border-color: #3a4654;
+}
+
+.exercise-card.completed {
+  border-color: rgba(124, 255, 79, .45);
+  opacity: .72;
+}
+
+.exercise-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exercise-number {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.exercise-name {
+  margin: 0 0 13px;
+  font-size: 21px;
+}
+
+.exercise-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.detail-pill {
+  padding: 7px 9px;
+  background: var(--surface-2);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.detail-pill strong {
+  color: var(--text);
+}
+
+.exercise-video-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 46px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border: 1px solid #34404e;
+  border-radius: 9px;
+  background: var(--surface-2);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .3px;
+  text-decoration: none;
+  text-align: center;
+  transition: .15s ease;
+}
+
+.exercise-video-link:hover {
+  border-color: var(--accent);
+  background: rgba(124, 255, 79, .12);
+}
+
+.exercise-video-link.is-compact {
+  margin: 0;
+  padding: 2px 0;
+  min-height: 0;
+  width: auto;
+  justify-self: start;
+  border: 0;
+  background: none;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.complete-btn {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid #34404e;
+  border-radius: 11px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 900;
+  transition: .15s ease;
+}
+
+.complete-btn:hover {
+  border-color: var(--accent);
+}
+
+.complete-btn.completed {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #081006;
+}
+
+.gif-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: #0b0f15;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+}
+
+.exercise-gif {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.gif-placeholder {
+  padding: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.empty-state {
+  padding: 45px 20px;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.empty-state > div {
+  font-size: 35px;
+}
+
+.empty-state h3 {
+  margin: 10px 0 5px;
+}
+
+.empty-state p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* =========================================
+   DIVISÃO DA SEMANA (SEGUNDA ATÉ SEXTA)
+   ========================================= */
+
+.workout-focus {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.division-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 14px;
+}
+
+.division-header h3 {
+  margin: 5px 0 0;
+}
+
+.division-summary {
+  margin: 0;
+  max-width: 55%;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: right;
+}
+
+.division-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  gap: 13px;
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 17px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color .2s ease, transform .2s ease;
+}
+
+.day-card:hover {
+  border-color: #3a4654;
+  transform: translateY(-2px);
+}
+
+.day-card.is-current {
+  border-color: rgba(124, 255, 79, .45);
+}
+
+.day-card.is-today {
+  background: linear-gradient(135deg, #17222b, #10151c);
+}
+
+.day-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.day-label {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.day-badge {
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+.day-badge.today {
+  background: var(--accent);
+  color: #081006;
+}
+
+.day-workout {
+  margin: 0;
+  font-size: 20px;
+}
+
+.day-focus {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.day-exercises {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.day-exercises li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.day-exercise-name {
+  min-width: 0;
+}
+
+.day-exercises li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34404e;
+}
+
+.day-rest {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.day-footer {
+  margin-top: auto;
+  display: grid;
+  gap: 10px;
+}
+
+.day-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.day-progress-bar {
+  flex: 1;
+  height: 7px;
+  overflow: hidden;
+  background: #202936;
+  border-radius: 999px;
+}
+
+.day-progress-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width .3s ease;
+}
+
+.day-progress-text {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.day-open-btn {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px;
+  border: 1px solid #34404e;
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .5px;
+  transition: .15s ease;
+}
+
+.day-open-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.day-open-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.day-card.is-current .day-open-btn {
+  background: rgba(124, 255, 79, .12);
+  border-color: rgba(124, 255, 79, .4);
+  color: var(--accent);
+}
+
+/* =========================================
+   MODAL
+   ========================================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding:
+    calc(20px + env(safe-area-inset-top)) 20px
+    calc(20px + env(safe-area-inset-bottom)) 20px;
+  background: rgba(0, 0, 0, .72);
+  overflow-y: auto;
+}
+
+.modal-card {
+  width: min(100%, 390px);
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.modal-card h3 {
+  margin-top: 0;
+}
+
+.modal-card p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.secondary-btn,
+.danger-btn {
+  min-height: 48px;
+  padding: 12px;
+  border-radius: 11px;
+  font-weight: 800;
+}
+
+.secondary-btn {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.danger-btn {
+  border: 0;
+  background: var(--danger);
+  color: white;
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+  .exercise-card {
+    grid-template-columns: minmax(0, 1fr) 150px;
+    gap: 14px;
+  }
+}
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 650px) {
+  .login-screen {
+    padding:
+      calc(16px + env(safe-area-inset-top)) 15px
+      calc(16px + env(safe-area-inset-bottom)) 15px;
+  }
+
+  .login-card {
+    padding: 28px 18px;
+    border-radius: 22px;
+  }
+
+  .login-card h1 {
+    font-size: 34px;
+  }
+
+  .brand-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  .workout-screen {
+    padding:
+      calc(18px + env(safe-area-inset-top)) calc(13px + env(safe-area-inset-right))
+      calc(35px + env(safe-area-inset-bottom)) calc(13px + env(safe-area-inset-left));
+  }
+
+  .topbar {
+    align-items: center;
+  }
+
+  .topbar h2 {
+    font-size: 22px;
+  }
+
+  .welcome-card {
+    padding: 17px;
+    gap: 14px;
+  }
+
+  .welcome-card h3 {
+    font-size: 21px;
+  }
+
+  .progress-circle {
+    width: 60px;
+    height: 60px;
+    border-width: 4px;
+    font-size: 13px;
+  }
+
+  .exercise-card {
+    grid-template-columns: 1fr;
+    padding: 13px;
+  }
+
+  .gif-container {
+    order: -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  /* No celular mostra o GIF inteiro, sem cortar */
+  .exercise-gif {
+    object-fit: contain;
+  }
+
+  .exercise-name {
+    font-size: 19px;
+  }
+
+  .exercise-header {
+    align-items: flex-end;
+  }
+
+  .exercise-video-link {
+    width: 100%;
+  }
+
+  .reset-btn {
+    padding: 9px 12px;
+    font-size: 12px;
+    min-height: 46px;
+  }
+
+  .view-tab-btn {
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+
+  .day-card {
+    padding: 14px;
+  }
+
+  /* Nome do exercício e, embaixo, o link "Ver o exercício" */
+  .day-exercises li {
+    display: grid;
+    grid-template-columns: 10px minmax(0, 1fr);
+    align-items: start;
+    gap: 4px 8px;
+  }
+
+  .day-exercises li::before {
+    margin-top: 6px;
+  }
+
+  .day-exercise-name,
+  .day-exercises li .exercise-video-link {
+    grid-column: 2;
+  }
+
+  .division-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .division-summary {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .division-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   CELULAR PEQUENO (até 480px)
+   ========================================= */
+
+@media (max-width: 480px) {
+  .workout-screen {
+    width: 100%;
+  }
+
+  .welcome-card {
+    flex-wrap: wrap;
+  }
+
+  .welcome-card > div:first-child {
+    min-width: 0;
+    flex: 1 1 170px;
+  }
+
+  .progress-circle {
+    width: 56px;
+    height: 56px;
+  }
+
+  .logout-btn {
+    padding: 10px 13px;
+  }
+
+  .modal-card {
+    padding: 20px;
+  }
+}
+
+/* =========================================
+   CELULARES ESTREITOS (até 380px / 360px)
+   ========================================= */
+
+@media (max-width: 380px) {
+  .login-card {
+    padding: 24px 14px;
+  }
+
+  .login-card h1 {
+    font-size: 30px;
+  }
+
+  .workout-tabs {
+    gap: 5px;
+  }
+
+  .tab-btn {
+    font-size: 12px;
+    padding: 12px 4px;
+  }
+
+  .welcome-card {
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .welcome-card h3 {
+    font-size: 19px;
+  }
+
+  .progress-circle {
+    width: 52px;
+    height: 52px;
+    border-width: 3px;
+    font-size: 12px;
+  }
+
+  .view-tabs {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .view-tab-btn {
+    font-size: 11px;
+    padding: 10px 4px;
+  }
+
+  .exercise-card,
+  .day-card {
+    padding: 12px;
+  }
+
+  .exercise-name {
+    font-size: 18px;
+  }
+
+  .day-workout {
+    font-size: 18px;
+  }
+
+  .exercise-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .detail-pill {
+    font-size: 11px;
+  }
+}
+
+/* Ao girar o celular na horizontal */
+@media (max-height: 480px) and (orientation: landscape) {
+  .login-card {
+    margin: 10px 0;
+  }
+}
+
+/* Acessibilidade: respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
